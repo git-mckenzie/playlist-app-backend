@@ -12,9 +12,8 @@ class PlaylistsController < ApplicationController
 
   def create
     playlist = Playlist.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
+      user_id: params[:user_id],
+      playlist_name: params[:playlist_name],
     )
     if playlist.save
       render json: { message: "Playlist created successfully" }, status: :created
@@ -27,7 +26,8 @@ class PlaylistsController < ApplicationController
     playlist_id = params["id"]
     playlist = Playlist.find(playlist_id)
 
-    playlist.name = params["name"] || playlist.name
+    playlist.user_id = params["user_id"] || playlist.user_id
+    playlist.playlist_name = params["playlist_name"] || playlist.playlist_name
 
     if playlist.save
       render json: playlist

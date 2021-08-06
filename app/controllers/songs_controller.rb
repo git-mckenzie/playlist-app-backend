@@ -14,4 +14,22 @@ class SongsController < ApplicationController
       render json: { errors: song.errors.full_messages }, status: :bad_request
     end
   end
+
+  def update
+    song_id = params["id"]
+    song = Song.find(song_id)
+
+    song.song_name = params["song_name"] || song.song_name
+    song.artist_name = params["artist_name"] || song.artist_name
+    song.album_name = params["album_name"] || song.album_name
+    song.album_art_url = params["album_art_url"] || song.album_art_url
+    song.song_url = params["song_url"] || song.song_url
+    song.buy_link = params["buy_link"] || song.buy_link
+
+    if song.save
+      render json: song
+    else
+      render json: { errors: song.errors.full_messages }, status: 418
+    end
+  end
 end
