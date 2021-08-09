@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     playlist = Playlist.all
     render json: playlist
