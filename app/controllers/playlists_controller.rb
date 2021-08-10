@@ -26,11 +26,21 @@ class PlaylistsController < ApplicationController
 
   def update
     playlist_id = params[:id]
-    playlist = Playlist.find_by(id: params[:playlist_id])
+    playlist_id_int = playlist_id.to_i
+    playlist = Playlist.find(playlist_id_int)
+    user_playlist = playlist.user_id.to_i
+    puts playlist_id
+    puts playlist_id_int
+    puts current_user.id
+    puts playlist.user_id
+    puts playlist.user_id.class
     # render json: { message: playlist.user_id }
     # render json: { message: current_user.id }
 
-    if playlist.user_id == current_user.id
+    if user_playlist == current_user.id
+      # render json: { message: playlist.user_id }
+      # render json: { message: current_user.id }
+
       playlist.playlist_name = params[:playlist_name] || playlist.playlist_name
 
       if playlist.save
