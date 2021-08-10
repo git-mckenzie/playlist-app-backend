@@ -41,4 +41,10 @@ class PlaylistsController < ApplicationController
       render json: { errors: playlist.errors.full_messages }, status: 420
     end
   end
+
+  def destroy
+    playlist = Playlist.find_by(id: params[:id])
+    playlist.destroy
+    render json: { message: "Playlist permanently deleted from the database." }
+  end
 end

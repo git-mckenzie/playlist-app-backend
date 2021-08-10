@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # get "songs/:id" => "songs#show"
   post "/songs" => "songs#create"
   patch "songs/:id" => "songs#update"  # updates status on playlist?
-  # delete "songs/:id" => "songs#destroy"
+  delete "songs/:id" => "songs#destroy"
 
   # playlists routes
 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get "playlists/:id" => "playlists#show"
   post "/playlists" => "playlists#create"
   patch "playlists/:id" => "playlists#update" # updates details including active status
-  # delete "playlists/:id" => "playlists#destroy"
+  delete "playlists/:id" => "playlists#destroy"
 
   # sessions routes
 
