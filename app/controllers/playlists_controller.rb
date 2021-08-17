@@ -12,6 +12,11 @@ class PlaylistsController < ApplicationController
     render json: playlist
   end
 
+  def userplaylists
+    playlists = Playlist.where(user_id: current_user.id)
+    render json: playlists
+  end
+
   def create
     playlist = Playlist.new(
       user_id: current_user.id,

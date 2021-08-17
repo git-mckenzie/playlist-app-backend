@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get "users/:id" => "users#show"
   post "/users" => "users#create"
   patch "users/:id" => "users#update"
-  # delete "users/:id" => "users#destroy"
+  delete "users/:id" => "users#destroy"
+
+  # get "/users/:id/playlists" => "users#userplaylists"
 
   # songs routes
 
-  # get "/songs" => "songs#index"
-  # get "songs/:id" => "songs#show"
+  get "/songs" => "songs#index"
+  get "songs/:id" => "songs#show"
   post "/songs" => "songs#create"
   patch "songs/:id" => "songs#update"  # updates status on playlist?
   delete "songs/:id" => "songs#destroy"
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   # playlists routes
 
   get "/playlists" => "playlists#index"
+  get "/playlists/userplaylists" => "playlists#userplaylists"
   get "playlists/:id" => "playlists#show"
   post "/playlists" => "playlists#create"
   patch "playlists/:id" => "playlists#update" # updates details including active status
