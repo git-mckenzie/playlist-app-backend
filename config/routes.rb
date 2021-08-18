@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   patch "playlists/:id" => "playlists#update" # updates details including active status
   delete "playlists/:id" => "playlists#destroy"
 
+  # playlistsongs routes
+
+  get "/playlistsongs" => "playlist_songs#index"
+
   # sessions routes
 
   post "/sessions" => "sessions#create"
