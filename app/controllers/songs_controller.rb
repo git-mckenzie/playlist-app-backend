@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:show]
 
   def create
     song = Song.new(
@@ -15,6 +15,11 @@ class SongsController < ApplicationController
     else
       render json: { errors: song.errors.full_messages }, status: :bad_request
     end
+  end
+
+  def show
+    song = Song.find_by(id: params[:id])
+    render json: song
   end
 
   def update
