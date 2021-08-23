@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # playlistsongs routes
 
-  get "/playlistsongs" => "playlist_songs#index"
+  get "/playlistsongs/:id" => "playlist_songs#index"
 
   # sessions routes
 
