@@ -52,4 +52,9 @@ class PlaylistsController < ApplicationController
     playlist.destroy
     render json: { message: "Playlist permanently deleted from the database." }
   end
+
+  def lastplaylist
+    playlist = Playlist.last
+    render json: playlist
+  end
 end

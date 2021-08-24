@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   patch "songs/:id" => "songs#update"  # updates status on playlist?
   delete "songs/:id" => "songs#destroy"
 
+  get "/lastsong" => "songs#lastsong" # gets last song to create playlistsong relationship
+
   # playlists routes
 
   get "/playlists" => "playlists#index"
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
   patch "playlists/:id" => "playlists#update" # updates details including active status
   delete "playlists/:id" => "playlists#destroy"
 
+  get "/lastplaylist" => "playlists#lastplaylist"  # gets last playlist to create playlistsong relationship
+
   # playlistsongs routes
 
   get "/playlistsongs/:id" => "playlist_songs#index"
@@ -36,4 +40,7 @@ Rails.application.routes.draw do
   # sessions routes
 
   post "/sessions" => "sessions#create"
+
+  # create playlistsong
+
 end

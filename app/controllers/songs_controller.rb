@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
-  before_action :authenticate_user, except: [:show]
+  # before_action :authenticate_user, except: [:show]
+  before_action :authenticate_user
 
   def create
     song = Song.new(
@@ -17,10 +18,10 @@ class SongsController < ApplicationController
     end
   end
 
-  def show
-    song = Song.find_by(id: params[:id])
-    render json: song
-  end
+  # def show
+  #   song = Song.find_by(id: params[:id])
+  #   render json: song
+  # end
 
   def update
     song_id = params["id"]
@@ -44,5 +45,10 @@ class SongsController < ApplicationController
     song = Song.find_by(id: params[:id])
     song.destroy
     render json: { message: "Song permanently deleted from the database." }
+  end
+
+  def lastsong
+    song = Song.last
+    render json: song
   end
 end
